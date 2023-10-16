@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        /* .heading::after{
+
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0%;
+            transform: translate(-50%, 0);
+            width: 50px;
+            height: 6px;
+            border-radius: 1px;
+            background-color: rgb(255, 251, 6);
+
+        } */
+
+        
+        .wrapper {
+            display: flex;
+            /* height: 100px;
+            width: 400px; */
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 5px;
+            padding: 20px 0px;
+            gap: 1em;
+            /* box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2); */
+        }
+
+        .wrapper .option {
+            background: #fff;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            /* margin: 0 20px; */
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 15px 10px;
+            border: 2px solid lightgrey;
+            transition: all 0.3s ease;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        #option-1:checked:checked ~ .option-1,
+        #option-2:checked:checked ~ .option-2,
+        #option-3:checked:checked ~ .option-3
+        
+         {
+            border-color: #22dba8;
+            background: #22dba8;
+        }
+
+        #option-4:checked:checked ~ .option-4,
+        #option-5:checked:checked ~ .option-5
+         {
+            border-color: #22dba8;
+            background: #22dba8;
+        }
+
+        #option-6:checked:checked ~ .option-6,
+        #option-7:checked:checked ~ .option-7
+         {
+            border-color: #22dba8;
+            background: #22dba8;
+        }
+
+        #option-8:checked:checked ~ .option-8,
+        #option-9:checked:checked ~ .option-9,
+        #option-10:checked:checked ~ .option-10,
+        #option-11:checked:checked ~ .option-11,
+        #option-12:checked:checked ~ .option-12
+        {
+            border-color: #22dba8;
+            background: #22dba8;
+        }
+        
+
+        .wrapper .option span {
+            font-size: 20px;
+            color: #808080;
+        }
+
+        #option-1:checked:checked ~ .option-1 span,
+        #option-2:checked:checked ~ .option-2 span,
+        #option-3:checked:checked ~ .option-3 span
+        {
+            color: #fff;
+        }
+
+        #option-4:checked:checked ~ .option-4 span,
+        #option-5:checked:checked ~ .option-5 span{
+            color: #fff;
+        }
+
+        #option-6:checked:checked ~ .option-6 span,
+        #option-7:checked:checked ~ .option-7 span{
+            color: #fff;
+        }
+
+        #option-8:checked:checked ~ .option-8 span,
+        #option-9:checked:checked ~ .option-9 span,
+        #option-10:checked:checked ~ .option-10 span,
+        #option-11:checked:checked ~ .option-11 span,
+        #option-12:checked:checked ~ .option-12 span
+        {
+            color: #fff;
+        }
+
+        .question{
+            margin: 7rem 0;
+        }
+
+        @media (max-width: 500px) {
+            .question{
+                margin: 3rem 0;
+            }
+        }
+
+    </style>
+
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+</head>
+<body>
+
+
+    <div class="container-fluid px-0 main-container">
+
+        <div class="d-flex flex-column align-items-center justify-content-between">
+            <div class="container-fluid shadow">
+                <nav class="navbar navbar-expand-lg bg-light py-3">
+                    <div class="container-fluid">
+                      <a class="navbar-brand fs-4 fw-bold" href="#">Diabetes Predictor</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="container-fluid h-100 d-flex align-items-center justify-content-center py-4 border border-2">
+            <div class="container">
+                <span class="fs-4 text-secondary">Answer the Following Questions: </span>
+                <div class="py-5">
+                    <form action="\predict" method="post" id="form">
+                        <div class="mb-5">
+                            <span class="fs-3 fw-semibold">What is your Gender?</span>
+                            <div>
+                                <div class="wrapper">
+                                    <input type="radio" name="gender" id="option-2" value="0">
+                                    <input type="radio" name="gender" id="option-1" value="1">
+                                    <label for="option-2" class="option option-2"><span>Female</span> </label>
+                                    <label for="option-1" class="option option-1"><span>Male</span> </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="question">
+                            <span class="fs-3 fw-semibold">What is your Age?</span>
+                            <div>
+                                <div class="wrapper">
+                                    <input class="w-100 py-3 px-4 fs-4 rounded-2 border border-2 text-secondary" type="number" step="any" name="age">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="question">
+                            <span class="fs-3 fw-semibold">Do you suffer from Hypertension?</span>
+                            <p class="text-secondary">
+                                (Hypertension is another name for high blood pressure, which is when the pressure in your blood vessels is too high (140/90 mmHg or higher) )
+                            </p>
+                            <div>
+                                <div class="wrapper">
+                                    <input type="radio" name="hypertension" id="option-5" value="0">
+                                    <input type="radio" name="hypertension" id="option-4" value="1">
+                                    <label for="option-5" class="option option-5"><span>No</span> </label>
+                                    <label for="option-4" class="option option-4"><span>Yes</span> </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="question">
+                            <span class="fs-3 fw-semibold">Do you suffer from any Heart Diseases?</span>
+                            <div>
+                                <div class="wrapper">
+                                    <input type="radio" name="heart_disease" id="option-7" value="0">
+                                    <input type="radio" name="heart_disease" id="option-6" value="1">
+                                    <label for="option-7" class="option option-7"><span>No</span> </label>
+                                    <label for="option-6" class="option option-6"><span>Yes</span> </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="question">
+                            <span class="fs-3 fw-semibold">Do you Smoke?</span>
+                            <div>
+                                <div class="wrapper d-sm-flex d-block">
+                                    <input type="radio" name="smoking_history" id="option-11" value="0">
+                                    <input type="radio" name="smoking_history" id="option-12" value="1">
+                                    <input type="radio" name="smoking_history" id="option-9" value="2">
+                                    <label for="option-11" class="option option-11 d-sm-flex d-inline-block mb-sm-0 mb-2"><span>Current Smoker</span> </label>
+                                    <label for="option-12" class="option option-12 d-sm-flex d-inline-block mb-sm-0 mb-2"><span>No Smoker</span> </label>
+                                    <label for="option-9" class="option option-9 d-sm-flex d-inline-block mb-sm-0 mb-2"><span>Past Smoker</span> </label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="question">
+                            <span class="fs-3 fw-semibold">What is your Body-Mass-Index (BMI)?</span>
+                            <div>
+                                <div class="wrapper">
+                                    <input class="w-100 py-3 px-4 fs-4 rounded-2 border border-2 text-secondary" type="number" step="any" name="bmi">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <span class="fs-3 fw-semibold">What is your Haemoglobin (HbA1c) level?</span>
+                            <div>
+                                <div class="wrapper">
+                                    <input class="w-100 py-3 px-4 fs-4 rounded-2 border border-2 text-secondary" type="number" step="any" name="HbA1c_level">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="question">
+                            <span class="fs-3 fw-semibold">What is your Blood Glucose level?</span>
+                            <div>
+                                <div class="wrapper">
+                                    <input class="w-100 py-3 px-4 fs-4 rounded-2 border border-2 text-secondary" type="number" step="any" name="blood_glucose_level" id="option-1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <button id="submit" class="w-100 py-3 fs-5 fw-normal btn-outline-primary btn border-3" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- <script>
+                        $("#submit").click((e)=>{
+                            console.log($('#form').serialize());
+                            e.preventDefault();
+                        })
+                    </script> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+ 
+</body>
+</html>

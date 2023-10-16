@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        /* .heading::after{
+
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0%;
+            transform: translate(-50%, 0);
+            width: 50px;
+            height: 6px;
+            border-radius: 1px;
+            background-color: rgb(255, 251, 6);
+
+        } */
+
+    </style>
+  
+</head>
+<body>
+
+
+    <div class="container-fluid px-0 main-container">
+
+        <div class="min-vh-100 d-flex flex-column align-items-center justify-content-between">
+            <div class="container-fluid shadow">
+                <nav class="navbar navbar-expand-lg bg-light py-3">
+                    <div class="container-fluid">
+                      <a class="navbar-brand fs-4 fw-bold" href="#">Diabetes Predictor</a>
+                    </div>
+                </nav>
+            </div>
+    
+            <div class="container-fluid flex-grow-1 h-100 d-flex align-items-center justify-content-center border border-2">
+                <div class="w-full h-full text-sm-center" style="max-width: 700px;">
+                    <h1 class="fw-bolder mb-4" style="font-size: 3rem;">Ready to Predict Your Diabetes Risk? Take our Interactive Test Now!</h1>
+                    <a href="\test" class="btn btn-dark rounded-0 mx-auto px-4 py-2">Take Test</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid h-100 d-flex flex-column align-items-center justify-content-center border border-2">
+            <h2 class="fw-semibold mt-5 mb-4">About Model</h2>
+            <p class="containe my-3 mb-5r fs-5" style="max-width: 900px;">
+                The Random Forest algorithm is a popular machine learning algorithm used for classification and regression tasks. It is an ensemble learning method that combines multiple decision trees to make predictions. In the context of diabetes prediction, a Random Forest model can be trained on a dataset to predict whether a person is likely to have diabetes based on various input features.
+
+                In this specific case, the dataset used for training the Random Forest model is taken from the Kaggle dataset "Diabetes Prediction Dataset" available at <a href="https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset">Diabetes prediction dataset (Kaggle)</a>. The dataset contains 100,000 data items, which include different attributes related to individuals such as age, gender, smoking history, BMI (Body Mass Index), glucose levels, blood pressure.
+            </p>
+
+            <p class="container fs-5 my-3 mb-5" style="max-width: 900px;">
+
+                Before training the Random Forest model, the dataset undergoes a preprocessing step. Data preprocessing typically involves tasks such as handling missing values, removing outliers, and converting categorical variables into numerical representations if necessary. The specifics of the preprocessing steps applied to this dataset are not mentioned, but they could include techniques like imputation for missing values or handling outliers through trimming or transformation.
+            </p>
+            <p class="container fs-5 my-3 mb-5" style="max-width: 900px;">
+                After preprocessing, the dataset undergoes feature scaling, which is a common practice in machine learning to normalize the features. Feature scaling ensures that all features have a similar range and prevents certain features from dominating the learning process due to their larger magnitude. Common methods for feature scaling include normalization (scaling values between 0 and 1) or standardization (transforming values to have zero mean and unit variance).
+            </p>
+            <p class="container fs-5 my-3 mb-5" style="max-width: 900px;">
+                The preprocessed and scaled dataset is then split into a training set and a testing set in a 8:2 ratio. The training set, which comprises 80% of the original dataset (80,000 data items in this case), is used to train the Random Forest model. The remaining 20% of the data (20,000 data items) are reserved as the testing set, which is used to evaluate the model's performance and accuracy.
+            </p>
+            <p class="container fs-5 my-3 mb-5" style="max-width: 900px;">
+                The model is trained on four types of different machine learning models. The models include Logistics Regression, RandomForest, DecisionTree, and Support Vector Machines.
+                Once the model is trained on the training set using the these algorithm, it is then evaluated on the testing set to measure its accuracy. The following table shows the performance of each model:
+            </p>
+            <table class="container table table-bordered" style="max-width: 900px;">
+                <thead>
+                  <tr>
+                    <th scope="col">Algorithm</th>
+                    <th scope="col" class="text-center">Accuracy(in %)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Logistic Regression</th>
+                    <td class="text-center">96.165</td>
+                  </tr>
+                  <tr>
+                    <th>Random Forest</th>
+                    <td class="text-center">97.13</td>
+                  </tr>
+                  <tr>
+                    <th>Support Vector Machines (SVM)</th>
+                    <td class="text-center">96.38</td>
+                  </tr>
+                  <tr>
+                    <th>Decision Tree</th>
+                    <td class="text-center">95.5</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            
+            <p class="container fs-5 my-3 mb-5" style="max-width: 900px;">
+                The best accuracy score is reported to be 97.13% by RandomForest algorithm, which indicates that the model correctly predicts the presence or absence of diabetes with high accuracy for the given dataset.
+            </p>
+            <p class="container fs-5 my-3 mb-5" style="max-width: 900px;">
+                It's important to note that the accuracy of a machine learning model can be influenced by several factors, such as the quality and representativeness of the dataset, the preprocessing techniques applied, the chosen algorithm, and the specific hyperparameters used for training the model. The reported accuracy score of 97.13% suggests that the Random Forest model performs well on the given dataset for diabetes prediction.
+            </p>
+
+            <p class="container fs-6 my-3 mb-5" style="max-width: 900px;">
+                
+                <span class="d-block fs-5 text-secondary mb-2">Important Note: </span> 
+
+                While machine learning models can provide valuable insights, they should not replace consulting a doctor or healthcare professional for accurate diagnosis and personalized medical advice. The model's predictions are based on data patterns, but individual health conditions are unique. It is essential to seek professional expertise to consider additional clinical information and undergo proper evaluation and testing for accurate diagnosis and treatment. Your health should always be guided by qualified healthcare professionals.
+            </p>
+        </div>
+    </div>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+ 
+</body>
+</html>
